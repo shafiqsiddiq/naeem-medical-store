@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Thermometer, Wind, Droplets, Sparkles, HeartPulse, ShieldPlus, Baby, Cross, LayoutGrid, Bike, Phone, MessageCircle, BadgeCheck } from "lucide-react";
 import { PHONE, WA } from "./Extras";
+import Pack from "./Pack";
 
 const categories = [
   { id: "all", label: "All", icon: LayoutGrid },
@@ -38,114 +39,6 @@ const medicines = [
 
 const tagColor = { OTC: "#34d399", Rx: "#ff5d8f", Device: "#22d3ee", Baby: "#fbbf24", Care: "#a78bfa" };
 
-function Pack({ form, color }) {
-  const label = (x, y, w, h) => (
-    <g>
-      <rect x={x} y={y} width={w} height={h} rx="4" fill="#fff" opacity=".95" />
-      <rect x={x + w / 2 - 2} y={y + h / 2 - 7} width="4" height="14" rx="1" fill={color} />
-      <rect x={x + w / 2 - 7} y={y + h / 2 - 2} width="14" height="4" rx="1" fill={color} />
-    </g>
-  );
-  const shapes = {
-    strip: (
-      <g>
-        <rect x="22" y="30" width="76" height="62" rx="9" fill="#e5e7eb" stroke="#fff" strokeWidth="2" />
-        {[0, 1, 2].map((c) => [0, 1].map((r) => (
-          <g key={`${c}${r}`}>
-            <rect x={28 + c * 23} y={36 + r * 26} width="19" height="22" rx="9.5" fill="#fff" opacity=".7" />
-            <ellipse cx={37.5 + c * 23} cy={47 + r * 26} rx="6" ry="8.5" fill={color} />
-          </g>
-        )))}
-      </g>
-    ),
-    syrup: (
-      <g>
-        <rect x="50" y="14" width="20" height="14" rx="3" fill="#334155" />
-        <rect x="53" y="28" width="14" height="10" fill="#cbd5e1" />
-        <rect x="34" y="38" width="52" height="68" rx="12" fill={color} opacity=".9" />
-        <rect x="34" y="38" width="52" height="68" rx="12" fill="url(#shine)" />
-        {label(40, 54, 40, 34)}
-      </g>
-    ),
-    bottle: (
-      <g>
-        <rect x="34" y="20" width="52" height="20" rx="6" fill="#334155" />
-        <rect x="30" y="38" width="60" height="68" rx="10" fill={color} opacity=".92" />
-        <rect x="30" y="38" width="60" height="68" rx="10" fill="url(#shine)" />
-        {label(37, 52, 46, 38)}
-      </g>
-    ),
-    box: (
-      <g>
-        <polygon points="26,38 82,38 94,28 38,28" fill="#fff" opacity=".85" />
-        <rect x="26" y="38" width="56" height="62" rx="3" fill={color} />
-        <polygon points="82,38 94,28 94,90 82,100" fill={color} opacity=".6" />
-        <rect x="26" y="38" width="56" height="62" rx="3" fill="url(#shine)" />
-        {label(34, 50, 40, 38)}
-      </g>
-    ),
-    sachet: (
-      <g>
-        <path d="M30 28 l5 -6 l5 6 l5 -6 l5 6 l5 -6 l5 6 l5 -6 l5 6 V98 H30 Z" fill={color} />
-        <path d="M30 28 l5 -6 l5 6 l5 -6 l5 6 l5 -6 l5 6 l5 -6 l5 6 V98 H30 Z" fill="url(#shine)" />
-        {label(38, 44, 44, 40)}
-      </g>
-    ),
-    lozenge: (
-      <g>
-        <rect x="18" y="42" width="84" height="38" rx="19" fill={color} />
-        <rect x="18" y="42" width="84" height="38" rx="19" fill="url(#shine)" />
-        {[0, 1, 2, 3].map((i) => <circle key={i} cx={36 + i * 16} cy="61" r="8" fill="#fff" opacity=".85" />)}
-      </g>
-    ),
-    tin: (
-      <g>
-        <ellipse cx="60" cy="96" rx="32" ry="8" fill={color} />
-        <rect x="28" y="38" width="64" height="58" fill={color} />
-        <ellipse cx="60" cy="38" rx="32" ry="8" fill="#e5e7eb" />
-        <rect x="28" y="38" width="64" height="58" fill="url(#shine)" />
-        {label(38, 52, 44, 34)}
-      </g>
-    ),
-    diaper: (
-      <g>
-        <path d="M22 36 h76 v22 c0 22 -14 34 -38 34 s-38 -12 -38 -34 Z" fill={color} />
-        <path d="M22 36 h76 v22 c0 22 -14 34 -38 34 s-38 -12 -38 -34 Z" fill="url(#shine)" />
-        <rect x="22" y="36" width="76" height="9" fill="#fff" opacity=".8" />
-        <circle cx="60" cy="66" r="8" fill="#fff" opacity=".85" />
-      </g>
-    ),
-    device: (
-      <g>
-        <rect x="46" y="16" width="28" height="82" rx="14" fill="#f1f5f9" />
-        <rect x="55" y="26" width="10" height="50" rx="5" fill="#cbd5e1" />
-        <rect x="55" y="48" width="10" height="28" rx="5" fill={color} />
-        <circle cx="60" cy="88" r="12" fill={color} />
-      </g>
-    ),
-    bandage: (
-      <g>
-        <rect x="16" y="46" width="88" height="28" rx="14" fill={color} transform="rotate(-18 60 60)" />
-        <rect x="42" y="46" width="36" height="28" fill="#fde68a" transform="rotate(-18 60 60)" />
-        <circle cx="52" cy="60" r="1.6" fill="#b45309" /><circle cx="60" cy="56" r="1.6" fill="#b45309" /><circle cx="68" cy="64" r="1.6" fill="#b45309" />
-      </g>
-    ),
-  };
-  return (
-    <svg viewBox="0 0 120 120" className="pack" aria-hidden="true">
-      <defs>
-        <linearGradient id="shine" x1="0" x2="1">
-          <stop offset="0" stopColor="#fff" stopOpacity=".35" />
-          <stop offset=".45" stopColor="#fff" stopOpacity="0" />
-          <stop offset="1" stopColor="#000" stopOpacity=".25" />
-        </linearGradient>
-      </defs>
-      <ellipse cx="60" cy="108" rx="34" ry="5" fill="#000" opacity=".35" />
-      {shapes[form] || shapes.box}
-    </svg>
-  );
-}
-
 export function Medicines() {
   const [active, setActive] = useState("all");
   const list = active === "all" ? medicines : medicines.filter((m) => m.cat === active);
@@ -177,7 +70,7 @@ export function Medicines() {
                 <div className="med-img" style={{ background: `radial-gradient(circle at 50% 55%, ${m.color}55, transparent 70%), rgba(255,255,255,.03)` }}>
                   <span className="med-tag" style={{ color: tagColor[m.tag], borderColor: tagColor[m.tag] }}>{m.tag === "Rx" ? "Rx" : m.tag}</span>
                   <motion.div className="pack-wrap" whileHover={{ rotate: -6, scale: 1.12 }} transition={{ type: "spring", stiffness: 300 }}>
-                    <Pack form={m.form} color={m.color} />
+                    <Pack form={m.form} color={m.color} name={m.name} />
                   </motion.div>
                 </div>
                 <div className="med-body">
