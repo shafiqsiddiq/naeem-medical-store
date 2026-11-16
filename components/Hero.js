@@ -51,7 +51,7 @@ export default function Hero() {
             <ShieldCheck color="#34d399" /><div>100% Genuine<small>Verified stock</small></div>
           </motion.div>
           <motion.div className="glass float-card" style={{ bottom: "22%", right: -10 }} animate={{ y: [0, 14, 0] }} transition={{ duration: 6, repeat: Infinity }}>
-            <Truck color="#22d3ee" /><div>Home Delivery<small>Fast &amp; reliable</small></div>
+            <Truck color="#22d3ee" /><div>Free Home Delivery<small>Call or WhatsApp us</small></div>
           </motion.div>
         </motion.div>
       </div>

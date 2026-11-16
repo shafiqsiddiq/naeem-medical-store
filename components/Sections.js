@@ -138,7 +138,7 @@ export function Contact() {
         <div className="contact-grid" style={{ textAlign: "left" }}>
           <Reveal>
             <a href={`tel:${PHONE}`} className="glass info"><div className="icon" style={{ margin: 0 }}><Phone color="#22d3ee" /></div><div><small style={{ color: "var(--muted)" }}>Call / WhatsApp</small><h3>{PHONE}</h3></div></a>
-            <div className="glass info"><div className="icon" style={{ margin: 0 }}><MapPin color="#22d3ee" /></div><div><small style={{ color: "var(--muted)" }}>Address</small><h3>Sabzi Wala Pull, Bedian Road, Lahore</h3><small className="urdu" style={{ color: "var(--muted)" }}>سبزی والا پل، بیدیاں روڈ، لاہور</small></div></div>
+            <div className="glass info"><div className="icon" style={{ margin: 0 }}><MapPin color="#22d3ee" /></div><div><small style={{ color: "var(--muted)" }}>Address</small><h3>Sabzi Wala Pull Hair, Bedian Road, Lahore</h3><small className="urdu" style={{ color: "var(--muted)" }}>سبزی والا پل ہیر، بیدیاں روڈ، لاہور</small></div></div>
             <div className="glass info"><div className="icon" style={{ margin: 0 }}><Users color="#22d3ee" /></div><div><small style={{ color: "var(--muted)" }}>Owner</small><h3>Malik Naeem</h3></div></div>
           </Reveal>
           <Reveal delay={0.15}>

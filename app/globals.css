@@ -118,3 +118,40 @@ footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:v
   .track span{font-size:17px}
   .card,.step{padding:24px}
 }
+
+/* Medicines */
+.cat-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:44px 0 34px}
+.cat-tab{position:relative;border:1px solid var(--line);background:var(--card);color:var(--muted);padding:10px 18px;border-radius:99px;cursor:pointer;font-family:inherit;font-size:14px;font-weight:500;transition:color .3s,border-color .3s}
+.cat-tab:hover{color:#fff;border-color:var(--accent)}
+.cat-tab.on{color:#fff;border-color:transparent}
+.cat-bg{position:absolute;inset:0;border-radius:99px;background:linear-gradient(135deg,var(--primary),var(--accent))}
+.cat-in{position:relative;display:flex;align-items:center;gap:8px}
+.med-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;text-align:left}
+@media(max-width:1000px){.med-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:720px){.med-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}}
+@media(max-width:420px){.med-grid{grid-template-columns:1fr}}
+.med-card{padding:22px;transition:border-color .3s}
+.med-card:hover{border-color:var(--accent)}
+.med-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:16px}
+.med-tag{font-size:11px;font-weight:600;border:1px solid;border-radius:99px;padding:3px 10px;white-space:nowrap}
+.med-card h3{font-size:18px;margin-bottom:2px}
+.med-card p{color:var(--muted);font-size:13px;margin-bottom:14px}
+.med-ask{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--accent);font-weight:500}
+.med-ask:hover{text-decoration:underline}
+.note{color:var(--muted);font-size:13px;margin-top:30px}
+@media(max-width:720px){.cat-tabs{gap:8px}.cat-tab{padding:8px 14px;font-size:13px}.med-card{padding:16px}}
+
+/* Delivery */
+.delivery{position:relative;overflow:hidden;border-radius:32px;padding:48px;display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;background:linear-gradient(120deg,#5b4bff,#22d3ee 70%,#34d399);box-shadow:0 30px 80px -30px rgba(34,211,238,.6)}
+.delivery::before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(255,255,255,.12);top:-160px;right:-80px}
+.delivery>*{position:relative}
+.bike{width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;color:#fff}
+.free-badge{display:inline-flex;gap:6px;align-items:center;background:#fff;color:#0c1233;font-size:12px;font-weight:700;padding:5px 14px;border-radius:99px;margin-bottom:10px;letter-spacing:.06em}
+.del-text h2{font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.1;margin-bottom:8px}
+.del-text p{max-width:560px}
+.del-cta{display:flex;flex-direction:column;gap:12px}
+.btn-white{background:#fff;color:#0c1233}
+.btn-white:hover{transform:translateY(-3px)}
+.btn-outline{border:2px solid rgba(255,255,255,.8);color:#fff;background:transparent}
+.btn-outline:hover{background:rgba(255,255,255,.15);transform:translateY(-3px)}
+@media(max-width:900px){.delivery{grid-template-columns:1fr;padding:32px 24px;text-align:center;justify-items:center}.del-text p{margin:0 auto 8px}.bike{width:90px;height:90px}}

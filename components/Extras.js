@@ -47,7 +47,7 @@ export function CursorGlow() {
 export function Navbar() {
   const [s, setS] = useState(false);
   useEffect(() => { const f = () => setS(window.scrollY > 40); f(); window.addEventListener("scroll", f); return () => window.removeEventListener("scroll", f); }, []);
-  const links = [["About", "about"], ["Services", "services"], ["Why Us", "whyus"], ["Process", "process"], ["Contact", "contact"]];
+  const links = [["About", "about"], ["Services", "services"], ["Medicines", "medicines"],["Why Us", "whyus"], ["Process", "process"], ["Contact", "contact"]];
   return (
     <motion.nav className={`nav ${s ? "scrolled" : ""}`} initial={{ y: -80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 2, duration: 0.7 }}>
       <a href="#home" className="logo"><span className="logo-mark"><Plus size={22} /></span>Naeem Medical</a>
