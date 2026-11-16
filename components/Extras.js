@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import { Plus, Phone, MessageCircle, Menu, X } from "lucide-react";
+import { Phone, MessageCircle, Menu, X } from "lucide-react";
+import Logo from "./Logo";
 
 export const PHONE = "0321-4137823";
 export const WA = "https://wa.me/923214137823";
@@ -15,8 +16,8 @@ export function Preloader() {
         <motion.div className="loader" exit={{ y: "-100%" }} transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}>
           <div style={{ textAlign: "center" }}>
             <motion.div initial={{ scale: 0, rotate: -180 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: "spring", duration: 1 }}
-              className="logo-mark" style={{ width: 90, height: 90, borderRadius: 28, margin: "0 auto 20px" }}>
-              <Plus size={50} />
+              style={{ width: 96, margin: "0 auto 20px" }}>
+              <Logo size={96} />
             </motion.div>
             <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>Naeem Medical Store</motion.h2>
             <motion.div initial={{ width: 0 }} animate={{ width: 200 }} transition={{ delay: 0.3, duration: 1.3 }}
@@ -51,10 +52,10 @@ export function Navbar() {
   const links = [["About", "about"], ["Services", "services"], ["Medicines", "medicines"],["Why Us", "whyus"], ["Process", "process"], ["Contact", "contact"]];
   return (
     <motion.nav className={`nav ${s ? "scrolled" : ""}`} initial={{ y: -80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 2, duration: 0.7 }}>
-      <a href="#home" className="logo"><span className="logo-mark"><Plus size={22} /></span>Naeem Medical</a>
+      <a href="#home" className="logo"><Logo size={42} /><span className="logo-text"><b>Naeem</b><small>Medical &amp; General Store</small></span></a>
       <div className="links">{links.map(([l, id]) => <a key={id} href={`#${id}`}>{l}</a>)}</div>
       <div className="nav-right">
-        <a href={`tel:${PHONE}`} className="btn btn-primary" style={{ padding: "10px 20px" }}><Phone size={16} />Call Now</a>
+        <a href={`tel:${PHONE}`} className="btn btn-primary" style={{ padding: "10px 20px" }}><Phone size={16} /><span className="call-txt">Call Now</span></a>
         <button className="menu-btn" onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X size={20} /> : <Menu size={20} />}</button>
       </div>
       <AnimatePresence>
