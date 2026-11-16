@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import { Phone, MessageCircle, Menu, X } from "lucide-react";
+import { Phone, MessageCircle, Menu, X, Sun, Moon } from "lucide-react";
 import Logo from "./Logo";
 
 export const PHONE = "0321-4137823";
@@ -45,6 +45,26 @@ export function CursorGlow() {
   return <motion.div className="glow" animate={{ left: p.x, top: p.y }} transition={{ type: "spring", damping: 30, stiffness: 120 }} />;
 }
 
+export function ThemeToggle() {
+  const [theme, setTheme] = useState("light");
+  useEffect(() => { setTheme(document.documentElement.dataset.theme === "dark" ? "dark" : "light"); }, []);
+  const toggle = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  };
+  return (
+    <button className="theme-btn" onClick={toggle} aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"} title={theme === "dark" ? "Light mode" : "Dark mode"}>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span key={theme} initial={{ y: 18, rotate: -90, opacity: 0 }} animate={{ y: 0, rotate: 0, opacity: 1 }} exit={{ y: -18, rotate: 90, opacity: 0 }} transition={{ duration: 0.25 }} style={{ display: "grid" }}>
+          {theme === "dark" ? <Sun size={19} /> : <Moon size={19} />}
+        </motion.span>
+      </AnimatePresence>
+    </button>
+  );
+}
+
 export function Navbar() {
   const [s, setS] = useState(false);
   const [open, setOpen] = useState(false);
@@ -55,6 +75,7 @@ export function Navbar() {
       <a href="#home" className="logo"><Logo size={42} /><span className="logo-text"><b>Naeem</b><small>Medical &amp; General Store</small></span></a>
       <div className="links">{links.map(([l, id]) => <a key={id} href={`#${id}`}>{l}</a>)}</div>
       <div className="nav-right">
+        <ThemeToggle />
         <a href={`tel:${PHONE}`} className="btn btn-primary" style={{ padding: "10px 20px" }}><Phone size={16} /><span className="call-txt">Call Now</span></a>
         <button className="menu-btn" onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X size={20} /> : <Menu size={20} />}</button>
       </div>

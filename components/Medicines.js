@@ -67,7 +67,7 @@ export function Medicines() {
             {list.map((m) => (
               <motion.div layout key={m.name} className="glass med-card" initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.85 }}
                 whileHover={{ y: -8 }} transition={{ duration: 0.35 }}>
-                <div className="med-img" style={{ background: `radial-gradient(circle at 50% 55%, ${m.color}55, transparent 70%), rgba(255,255,255,.03)` }}>
+                <div className="med-img" style={{ background: `radial-gradient(circle at 50% 55%, ${m.color}55, transparent 70%), var(--imgbg)` }}>
                   <span className="med-tag" style={{ color: tagColor[m.tag], borderColor: tagColor[m.tag] }}>{m.tag === "Rx" ? "Rx" : m.tag}</span>
                   <motion.div className="pack-wrap" whileHover={{ rotate: -6, scale: 1.12 }} transition={{ type: "spring", stiffness: 300 }}>
                     <Pack form={m.form} color={m.color} name={m.name} />
