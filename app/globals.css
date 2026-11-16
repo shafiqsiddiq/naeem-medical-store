@@ -155,3 +155,44 @@ footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:v
 .btn-outline{border:2px solid rgba(255,255,255,.8);color:#fff;background:transparent}
 .btn-outline:hover{background:rgba(255,255,255,.15);transform:translateY(-3px)}
 @media(max-width:900px){.delivery{grid-template-columns:1fr;padding:32px 24px;text-align:center;justify-items:center}.del-text p{margin:0 auto 8px}.bike{width:90px;height:90px}}
+
+/* Medicine cards with images */
+.med-card{padding:0;overflow:hidden}
+.med-img{position:relative;height:150px;display:grid;place-items:center;border-bottom:1px solid var(--line)}
+.med-img .med-tag{position:absolute;top:12px;left:12px;background:rgba(7,11,31,.6);backdrop-filter:blur(6px)}
+.pack-wrap{width:120px;height:120px;filter:drop-shadow(0 12px 18px rgba(0,0,0,.45))}
+.pack{width:100%;height:100%}
+.med-body{padding:18px 20px 20px}
+.med-body p{margin-bottom:12px}
+.cat-wrap{margin:44px 0 34px}
+.cat-wrap .cat-tabs{margin:0}
+
+/* Mobile menu */
+.menu-btn{display:none;background:var(--card);border:1px solid var(--line);color:#fff;width:42px;height:42px;border-radius:50%;place-items:center;cursor:pointer}
+.mobile-menu{position:fixed;top:72px;left:3%;right:3%;z-index:99;padding:14px;display:flex;flex-direction:column;background:rgba(10,14,40,.94)!important;backdrop-filter:blur(20px)}
+.mobile-menu a{padding:14px 18px;border-radius:14px;font-weight:500;color:var(--muted)}
+.mobile-menu a:hover{background:rgba(255,255,255,.06);color:#fff}
+.nav-right{display:flex;align-items:center;gap:10px}
+
+@media(max-width:860px){.menu-btn{display:grid}}
+@media(max-width:720px){
+  .cat-wrap{margin:30px -4vw 26px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .cat-wrap::-webkit-scrollbar{display:none}
+  .cat-wrap .cat-tabs{flex-wrap:nowrap;justify-content:flex-start;width:max-content;padding:0 4vw}
+  .cat-tab{white-space:nowrap}
+  .med-img{height:118px}
+  .pack-wrap{width:92px;height:92px}
+  .med-body{padding:12px 14px 16px}
+  .med-card h3{font-size:15px}
+  .med-card p{font-size:12px;margin-bottom:10px}
+  .med-ask{font-size:12px}
+  .med-img .med-tag{top:8px;left:8px;font-size:10px;padding:2px 8px}
+  h2.title{font-size:clamp(26px,8vw,36px)}
+  .sub{font-size:15px}
+  .grid3{margin-top:36px;gap:16px}
+  .steps{margin-top:36px;gap:14px}
+  .contact-grid{margin-top:34px}
+  .owner{padding:28px 20px}
+  footer{padding:28px 0 90px}
+}
+@media(max-width:420px){.med-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import { Plus, Phone, MessageCircle } from "lucide-react";
+import { Plus, Phone, MessageCircle, Menu, X } from "lucide-react";
 
 export const PHONE = "0321-4137823";
 export const WA = "https://wa.me/923214137823";
@@ -46,13 +46,24 @@ export function CursorGlow() {
 
 export function Navbar() {
   const [s, setS] = useState(false);
+  const [open, setOpen] = useState(false);
   useEffect(() => { const f = () => setS(window.scrollY > 40); f(); window.addEventListener("scroll", f); return () => window.removeEventListener("scroll", f); }, []);
   const links = [["About", "about"], ["Services", "services"], ["Medicines", "medicines"],["Why Us", "whyus"], ["Process", "process"], ["Contact", "contact"]];
   return (
     <motion.nav className={`nav ${s ? "scrolled" : ""}`} initial={{ y: -80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 2, duration: 0.7 }}>
       <a href="#home" className="logo"><span className="logo-mark"><Plus size={22} /></span>Naeem Medical</a>
       <div className="links">{links.map(([l, id]) => <a key={id} href={`#${id}`}>{l}</a>)}</div>
-      <a href={`tel:${PHONE}`} className="btn btn-primary" style={{ padding: "10px 20px" }}><Phone size={16} />Call Now</a>
+      <div className="nav-right">
+        <a href={`tel:${PHONE}`} className="btn btn-primary" style={{ padding: "10px 20px" }}><Phone size={16} />Call Now</a>
+        <button className="menu-btn" onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X size={20} /> : <Menu size={20} />}</button>
+      </div>
+      <AnimatePresence>
+        {open && (
+          <motion.div className="glass mobile-menu" initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}>
+            {links.map(([l, id]) => <a key={id} href={`#${id}`} onClick={() => setOpen(false)}>{l}</a>)}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }
